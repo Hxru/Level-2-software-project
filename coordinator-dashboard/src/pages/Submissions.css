@@ -1,0 +1,129 @@
+.submissions-page {
+  max-width: 1400px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: white;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 2px solid #e2e8f0;
+  margin-bottom: 24px;
+  max-width: 500px;
+}
+
+.search-bar input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: #1a202c;
+}
+
+.submissions-table-container {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.submissions-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.submissions-table thead {
+  background: #f7fafc;
+}
+
+.submissions-table th {
+  padding: 16px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+  color: #718096;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.submissions-table td {
+  padding: 16px;
+  border-top: 1px solid #e2e8f0;
+  font-size: 14px;
+  color: #4a5568;
+}
+
+.project-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.project-cell strong {
+  color: #1a202c;
+  font-weight: 600;
+}
+
+.status-badge {
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.status-badge.submitted {
+  background: #bee3f8;
+  color: #2c5282;
+}
+
+.status-badge.reviewed {
+  background: #c6f6d5;
+  color: #22543d;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.action-btn {
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.action-btn.view {
+  background: #e6fffa;
+  color: #38b2ac;
+}
+
+.action-btn.view:hover {
+  background: #b2f5ea;
+}
+
+.action-btn.download {
+  background: #ebf4ff;
+  color: #4299e1;
+}
+
+.action-btn.download:hover {
+  background: #bee3f8;
+}
+
+@media (max-width: 1200px) {
+  .submissions-table-container {
+    overflow-x: auto;
+  }
+
+  .submissions-table {
+    min-width: 900px;
+  }
+}
