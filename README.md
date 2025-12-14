@@ -1,4 +1,4 @@
-# Project Management System - Final Year Project
+# Project Management System - Second Year Project
 
 **🎯 Project Goal:** Develop **Role-Based Dashboards** for 5 different user roles
 
