@@ -26,7 +26,7 @@ npm install -D tailwindcss postcss autoprefixer
 npx tailwindcss init -p
 ```
 
-5. **Configure Tailwind in tailwind.config.js:**
+4. **Configure Tailwind in tailwind.config.js:**
 ```javascript
 module.exports = {
   content: [
@@ -46,7 +46,7 @@ module.exports = {
 @tailwind utilities;
 ```
 
-7. **Run the app:**
+6. **Run the app:**
 ```bash
 npm start
 ```
