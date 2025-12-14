@@ -236,4 +236,4 @@ git push origin feature/your-dashboard-name
 
 ## 📄 License
 
-This is a university final year project for academic purposes.
+This is a university second year project for academic purposes.
