@@ -1,8 +1,8 @@
 # Industry Mentor Dashboard
 
-**Assigned to:** [Team Member Name]  
-**Port:** 5175  
-**Status:** 🔄 To Start
+**Assigned to:** [Medinie Edirisinghe]  
+**Port:** 3000
+**Status:** 🔄 Ongoing
 
 ---
 
@@ -10,30 +10,45 @@
 
 1. **Navigate to this folder:**
 ```bash
-cd industry-mentor-dashboard
+cd edusync-mentor-dashboard
 ```
 
 2. **Create React app:**
 ```bash
-npm create vite@latest . -- --template react
+npx create -react-app edusync-mentor-dashboard
 npm install
 npm install react-router-dom lucide-react
 ```
 
-3. **Configure port in vite.config.js:**
-```javascript
-export default defineConfig({
-  plugins: [react()],
-  server: {
-    port: 5175,
-    strictPort: true
-  }
-})
+3. **Install and Configure Tailwind CSS:**
+```bash   
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
 ```
 
-4. **Run the app:**
+5. **Configure Tailwind in tailwind.config.js:**
+```javascript
+module.exports = {
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
+
+5. **Update src/index.css:**
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+7. **Run the app:**
 ```bash
-npm run dev
+npm start
 ```
 
 ---
@@ -41,76 +56,95 @@ npm run dev
 ## 📋 Required Features
 
 ### **Dashboard Overview:**
-- Assigned projects count
-- Upcoming meetings
-- Recent feedback given
-- Industry insights shared
+- Summary cards (Assigned Groups, Ongoing, Delayed, Completed projects)
+- Assigned projects list with progress bars
+- Upcoming deadlines calendar
+- Recent activity feed
+- Quick statistics overview Industry insights shared
 
-### **Assigned Projects:**
-- View all assigned project groups
-- Project progress tracking
-- Team member details
-- Review project documentation
+### **Project Workspace:**
+**Overview Tab:**
+- Project description
+- Group members with roles
+- Overall progress tracking
 
-### **Industry Feedback:**
-- Provide industry-specific feedback
-- Review project feasibility
-- Real-world applicability assessment
-- Technology recommendations
+**Tasks & Timeline Tab:**
+- Complete task list with deadlines
+- Progress indicators per task
+- Task status (Completed, In Progress, Delayed, Not Started)
+- Add comments to tasks
 
-### **Meetings:**
-- Schedule meetings with students
-- View meeting history
-- Meeting notes and action items
+**Files & Submissions Tab:**
+- View submitted files
+- Download documents
+- Add comments on submissions
+- File version tracking
 
-### **Reports:**
-- Generate progress reports
-- Industry compliance checklist
-- Market analysis for projects
+**Feedback Tab:**
+- View feedback history
+- Add new feedback to projects
+- Supervisor and mentor comments
 
-### **Communication:**
-- Message students and coordinators
-- Group discussions
-- Announcement board
+### **Communication & Settings:**
+
+**Messages:**
+- Chat interface with students and supervisors
+- Conversation list with unread indicators
+- Real-time messaging interface
+- Search conversations
+
+**Notifications:**
+- System notifications (file uploads, delays, deadlines)
+- Categorized by type (file, alert, feedback, deadline)
+- Notification history
+
+
+**Profile & Settings:**
+- Edit profile information
+- Notification preferences
+- Change password
+- Department and contact info
+
 
 ---
 
 ## 🎨 Design Guidelines
 
-- **Follow Coordinator Dashboard design**
-- **Use EduSync branding** (E logo)
-- **Color scheme:** Purple/Blue gradient (#667eea to #764ba2)
-- **Header:** "Welcome back, Industry Mentor"
-- **Icons:** Use Lucide React icons
-
+- **Follow Coordinator Dashboard design**  
+- **Color scheme:**Slate sidebar (#1f2937 to #0f172a) with Blue accents (#3b82f6)
+- **Header:** "Welcome back,  [Mentor Name]"
+- **Icons:** Lucide React icons throughout
+- **Layout:** Fixed sidebar + scrollable content area
+- **Responsive:** Works on desktop and tablet
 ---
 
 ## 📝 Example Pages Structure
 
 ```
-industry-mentor-dashboard/
+mentor-dashboard/
 ├── src/
 │   ├── components/
-│   │   ├── Sidebar.jsx
-│   │   ├── Header.jsx
-│   │   └── ProtectedRoute.jsx
+│   │   ├── Sidebar.js          
+│   │   └── Topbar.js           
 │   ├── pages/
-│   │   ├── Overview.jsx
-│   │   ├── AssignedProjects.jsx
-│   │   ├── Feedback.jsx
-│   │   ├── Meetings.jsx
-│   │   ├── Reports.jsx
-│   │   └── Communication.jsx
-│   ├── context/
-│   │   └── AuthContext.jsx
-│   ├── layouts/
-│   │   └── DashboardLayout.jsx
-│   └── App.jsx
+│   │   ├── Dashboard.js        
+│   │   ├── ProjectWorkspace.js 
+│   │   └── CommunicationSettings.js
+│   ├── data/
+│   │   └── data.js           
+│   ├── App.js                  
+│   ├── index.js               
+│   └── index.css          
+├── public/
+├── package.json
+├── tailwind.config.js
+├── postcss.config.js
+└── README.md
 ```
 
 ---
 
-## 🚀 Start Date: January 2026
+## 🚀 Start Date: December 2026
 ## ✅ Target Completion: February 2026
 
 **Reference:** Check `coordinator-dashboard` folder for design patterns!
