@@ -118,7 +118,7 @@ npm start
 - **Responsive:** Works on desktop and tablet
 ---
 
-## 📝 Example Pages Structure
+## 📝 Dashboard  Structure
 
 ```
 mentor-dashboard/
@@ -147,4 +147,3 @@ mentor-dashboard/
 ## 🚀 Start Date: December 2026
 ## ✅ Target Completion: February 2026
 
-**Reference:** Check `coordinator-dashboard` folder for design patterns!
