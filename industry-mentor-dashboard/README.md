@@ -111,7 +111,7 @@ npm start
 ## 🎨 Design Guidelines
 
 - **Follow Coordinator Dashboard design**  
-- **Color scheme:**Slate sidebar (#1f2937 to #0f172a) with Blue accents (#3b82f6)
+- **Color scheme:** Slate sidebar (#1f2937 to #0f172a) with Blue accents (#3b82f6)
 - **Header:** "Welcome back,  [Mentor Name]"
 - **Icons:** Lucide React icons throughout
 - **Layout:** Fixed sidebar + scrollable content area
