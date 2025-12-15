@@ -1,8 +1,8 @@
 # Admin Dashboard
 
-**Assigned to:** [Team Member Name]  
+**Assigned to:** [S.A.S Harshika]  
 **Port:** 5176  
-**Status:** 🔄 To Start
+**Status:** 🔄 Ongoing
 
 ---
 
