@@ -14,7 +14,7 @@
 |--------|------|-----------|--------|
 | **Hxru** | Coordinator | coordinator-dashboard | ✅ Complete |
 | **Member 2** | Student | student-dashboard | ⏳ To Start |
-| **Member 3** | Industry Mentor | industry-mentor-dashboard | ⏳ To Start |
+| **Medinie** | Industry Mentor | industry-mentor-dashboard | ⏳ongoing|
 | **Member 4** | Admin | admin-dashboard | ⏳ To Start |
 | **Member 5** | Supervisor | supervisor-dashboard | ⏳ To Start |
 
