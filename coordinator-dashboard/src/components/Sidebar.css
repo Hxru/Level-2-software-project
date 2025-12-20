@@ -8,6 +8,21 @@
   transition: width 0.3s ease;
   position: sticky;
   top: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
 }
 
 .sidebar.collapsed {
@@ -83,6 +98,16 @@
   text-decoration: none;
   transition: all 0.2s;
   position: relative;
+  cursor: pointer;
+  user-select: none;
+}
+
+.nav-item.expandable {
+  cursor: pointer;
+}
+
+.nav-item .expand-icon {
+  margin-left: auto;
 }
 
 .sidebar.collapsed .nav-item {
@@ -97,6 +122,79 @@
 .nav-item:hover {
   background: rgba(255, 255, 255, 0.05);
   color: white;
+}
+
+.nav-item.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.nav-item.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: white;
+}
+
+.sidebar.collapsed .nav-item.active::before {
+  display: none;
+}
+
+/* Submenu Styles */
+.submenu {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 8px 0;
+  margin: 4px 0;
+  border-left: 2px solid rgba(255, 255, 255, 0.1);
+  margin-left: 20px;
+}
+
+.submenu-item {
+  display: block;
+  padding: 10px 20px;
+  padding-left: 40px;
+  color: #a0aec0;
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.submenu-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+}
+
+.submenu-item.active {
+  background: rgba(102, 126, 234, 0.2);
+  color: #a5b4fc;
+  border-left: 3px solid #667eea;
+}
+
+/* Evaluation Nested Submenu */
+.submenu-section {
+  margin: 8px 0;
+}
+
+.submenu-title {
+  padding: 8px 20px;
+  padding-left: 40px;
+  color: #cbd5e0;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.submenu-section .submenu-item {
+  padding-left: 52px;
+  font-size: 13px;
+}
+
+.sidebar.collapsed .submenu {
+  display: none;
 }
 
 .nav-item.active {

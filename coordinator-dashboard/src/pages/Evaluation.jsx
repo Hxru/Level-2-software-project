@@ -2,61 +2,96 @@ import { useState } from 'react';
 import { Search, Star, CheckCircle, XCircle, Clock } from 'lucide-react';
 import './Evaluation.css';
 
-const Evaluation = () => {
+const Evaluation = ({ level = 'All', stage = 'All' }) => {
   const [searchTerm, setSearchTerm] = useState('');
+
+  const stageNames = {
+    'proposal': 'Proposal Stage',
+    'interim': 'Interim Evaluation',
+    'code-review': 'Code Review',
+    'final': 'Final Evaluation',
+  };
 
   const evaluations = [
     {
       id: 1,
       project: 'AI-Based Chatbot System',
       group: 'Group A',
-      phase: 'Mid-Term',
+      phase: 'interim',
       submittedDate: '2025-12-10',
       status: 'pending',
       score: null,
+      level: '2',
     },
     {
       id: 2,
       project: 'E-Commerce Platform',
       group: 'Group B',
-      phase: 'Final',
+      phase: 'final',
       submittedDate: '2025-12-08',
       status: 'pending',
       score: null,
+      level: '3',
     },
     {
       id: 3,
       project: 'Mobile Learning Application',
       group: 'Group C',
-      phase: 'Mid-Term',
+      phase: 'interim',
       submittedDate: '2025-11-25',
       status: 'approved',
       score: 85,
+      level: '1',
     },
     {
       id: 4,
       project: 'Data Analytics Dashboard',
       group: 'Group D',
-      phase: 'Proposal',
+      phase: 'proposal',
       submittedDate: '2025-11-20',
       status: 'approved',
       score: 78,
+      level: '4',
+    },
+    {
+      id: 5,
+      project: 'Smart Home Automation',
+      group: 'Group E',
+      phase: 'code-review',
+      submittedDate: '2025-12-12',
+      status: 'pending',
+      score: null,
+      level: '2',
     },
   ];
 
-  const filteredEvaluations = evaluations.filter((evaluation) =>
-    evaluation.project.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    evaluation.group.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredEvaluations = evaluations
+    .filter((evaluation) => level === 'All' || evaluation.level === level)
+    .filter((evaluation) => stage === 'All' || evaluation.phase === stage)
+    .filter((evaluation) =>
+      evaluation.project.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      evaluation.group.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
   const handleEvaluate = (id) => {
     alert(`Opening evaluation form for project ${id}`);
   };
 
+  const pageTitle = () => {
+    if (level !== 'All' && stage !== 'All') {
+      return `Evaluation - Level ${level}: ${stageNames[stage]}`;
+    } else if (level !== 'All') {
+      return `Evaluation - Level ${level}`;
+    } else if (stage !== 'All') {
+      return `Evaluation - ${stageNames[stage]}`;
+    }
+    return 'Project Evaluation';
+  };
+
   return (
     <div className="evaluation-page">
       <div className="page-header">
-        <h2>Project Evaluation</h2>
+        <h2>{pageTitle()}</h2>
         <p>Review and evaluate project submissions</p>
       </div>
 
@@ -78,7 +113,7 @@ const Evaluation = () => {
             <div className="evaluation-header">
               <div>
                 <h3>{evaluation.project}</h3>
-                <p className="group-name">{evaluation.group}</p>
+                <p className="group-name">{evaluation.group} • Level {evaluation.level}</p>
               </div>
               <span className={`eval-status ${evaluation.status}`}>
                 {evaluation.status === 'pending' && <Clock size={16} />}

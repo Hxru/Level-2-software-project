@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Search, Download, Eye, FileText, Upload } from 'lucide-react';
 import './Submissions.css';
 
-const Submissions = () => {
+const Submissions = ({ level = 'All' }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const submissions = [
@@ -15,6 +15,7 @@ const Submissions = () => {
       submittedDate: '2025-12-10 14:30',
       status: 'submitted',
       fileSize: '2.4 MB',
+      level: '2',
     },
     {
       id: 2,
@@ -25,6 +26,7 @@ const Submissions = () => {
       submittedDate: '2025-12-09 10:15',
       status: 'submitted',
       fileSize: '1.8 MB',
+      level: '1',
     },
     {
       id: 3,
@@ -35,6 +37,7 @@ const Submissions = () => {
       submittedDate: '2025-12-08 16:45',
       status: 'reviewed',
       fileSize: '1.2 MB',
+      level: '3',
     },
     {
       id: 4,
@@ -45,21 +48,23 @@ const Submissions = () => {
       submittedDate: '2025-12-07 09:20',
       status: 'reviewed',
       fileSize: '3.1 MB',
+      level: '4',
     },
   ];
 
-  const filteredSubmissions = submissions.filter(
-    (sub) =>
+  const filteredSubmissions = submissions
+    .filter((sub) => level === 'All' || sub.level === level)
+    .filter((sub) =>
       sub.project.toLowerCase().includes(searchTerm.toLowerCase()) ||
       sub.group.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+    );
 
   return (
     <div className="submissions-page">
       <div className="page-header">
         <div>
-          <h2>Submissions</h2>
-          <p>Review and manage student submissions</p>
+          <h2>Submissions {level !== 'All' ? `- Level ${level}` : ''}</h2>
+          <p>Review and manage {level !== 'All' ? `Level ${level}` : 'all'} student submissions</p>
         </div>
       </div>
 

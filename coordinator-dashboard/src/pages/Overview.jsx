@@ -5,6 +5,8 @@ import {
   AlertCircle,
   TrendingUp,
   Calendar,
+  Bell,
+  Clock,
 } from 'lucide-react';
 import './Overview.css';
 
@@ -75,10 +77,58 @@ const Overview = () => {
     },
   ];
 
+  const upcomingProjects = [
+    {
+      id: 1,
+      name: 'Smart Home Automation',
+      group: 'Group H',
+      startDate: '2025-12-22',
+      level: 'Level 2',
+    },
+    {
+      id: 2,
+      name: 'Healthcare Management System',
+      group: 'Group I',
+      startDate: '2025-12-25',
+      level: 'Level 3',
+    },
+    {
+      id: 3,
+      name: 'Blockchain-based Voting',
+      group: 'Group J',
+      startDate: '2025-12-28',
+      level: 'Level 4',
+    },
+  ];
+
   const upcomingDeadlines = [
     { task: 'Project Proposal Review', date: '2025-12-15', group: 'Group E' },
     { task: 'Mid-Term Evaluation', date: '2025-12-18', group: 'Group F' },
     { task: 'Final Submission', date: '2025-12-20', group: 'Group G' },
+  ];
+
+  const announcements = [
+    {
+      id: 1,
+      title: 'Evaluation Panel Assignment - Level 2',
+      content: 'All supervisors must submit evaluation panel availability by Dec 22.',
+      date: '2025-12-19',
+      priority: 'high',
+    },
+    {
+      id: 2,
+      title: 'Code Review Schedule',
+      content: 'Level 2 code review sessions scheduled for Dec 23-25. Check calendar.',
+      date: '2025-12-18',
+      priority: 'medium',
+    },
+    {
+      id: 3,
+      title: 'Winter Break Notice',
+      content: 'Project submissions will be frozen from Dec 24 - Jan 1.',
+      date: '2025-12-17',
+      priority: 'low',
+    },
   ];
 
   return (
@@ -165,6 +215,68 @@ const Overview = () => {
                   <h4>{deadline.task}</h4>
                   <p>{deadline.group}</p>
                 </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Secondary Content Grid */}
+      <div className="content-grid">
+        {/* Upcoming Projects */}
+        <div className="card">
+          <div className="card-header">
+            <h3>
+              <Clock size={20} />
+              Upcoming Projects
+            </h3>
+          </div>
+          <div className="upcoming-projects-list">
+            {upcomingProjects.map((project) => (
+              <div key={project.id} className="upcoming-project-item">
+                <div className="project-main">
+                  <h4>{project.name}</h4>
+                  <p>{project.group}</p>
+                </div>
+                <div className="project-meta">
+                  <span className="level-badge">{project.level}</span>
+                  <span className="start-date">
+                    Starts: {new Date(project.startDate).toLocaleDateString('en-US', {
+                      month: 'short',
+                      day: 'numeric'
+                    })}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Announcements */}
+        <div className="card">
+          <div className="card-header">
+            <h3>
+              <Bell size={20} />
+              Announcements
+            </h3>
+          </div>
+          <div className="announcements-list">
+            {announcements.map((announcement) => (
+              <div key={announcement.id} className={`announcement-item priority-${announcement.priority}`}>
+                <div className="announcement-header">
+                  <h4>{announcement.title}</h4>
+                  <span className={`priority-badge ${announcement.priority}`}>
+                    {announcement.priority}
+                  </span>
+                </div>
+                <p className="announcement-content">{announcement.content}</p>
+                <span className="announcement-date">
+                  {new Date(announcement.date).toLocaleDateString('en-US', {
+                    month: 'short',
+                    day: 'numeric',
+                    year: 'numeric'
+                  })}
+                </span>
               </div>
             ))}
           </div>

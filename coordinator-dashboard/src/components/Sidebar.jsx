@@ -7,21 +7,89 @@ import {
   ClipboardCheck,
   UserCog,
   MessageSquare,
+  CalendarDays,
   ChevronLeft,
   ChevronRight,
+  ChevronDown,
 } from 'lucide-react';
 import './Sidebar.css';
 
 const Sidebar = () => {
   const [collapsed, setCollapsed] = useState(false);
+  const [expandedMenus, setExpandedMenus] = useState({
+    academicLevel: false,
+  });
+
+  const toggleMenu = (menuKey) => {
+    if (!collapsed) {
+      setExpandedMenus(prev => ({
+        ...prev,
+        [menuKey]: !prev[menuKey]
+      }));
+    }
+  };
 
   const menuItems = [
-    { path: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
-    { path: '/dashboard/project-groups', icon: UsersGroup, label: 'Project Groups' },
-    { path: '/dashboard/submissions', icon: FolderOpen, label: 'Submissions' },
-    { path: '/dashboard/evaluation', icon: ClipboardCheck, label: 'Evaluation' },
-    { path: '/dashboard/user-management', icon: UserCog, label: 'User Management' },
-    { path: '/dashboard/communication', icon: MessageSquare, label: 'Communication' },
+    { 
+      path: '/dashboard', 
+      icon: LayoutDashboard, 
+      label: 'Dashboard' 
+    },
+    { 
+      key: 'academicLevel',
+      icon: UsersGroup, 
+      label: 'Academic Level',
+      hasSubmenu: true,
+      submenu: [
+        { 
+          label: 'Level 1', 
+          items: [
+            { path: '/dashboard/level-1/proposal', label: 'Proposal' },
+            { path: '/dashboard/level-1/interim', label: 'Interim' },
+            { path: '/dashboard/level-1/final', label: 'Final Evaluation' },
+            { path: '/dashboard/level-1/submission', label: 'File Submission' },
+          ]
+        },
+        { 
+          label: 'Level 2', 
+          items: [
+            { path: '/dashboard/level-2/proposal', label: 'Proposal' },
+            { path: '/dashboard/level-2/interim', label: 'Interim' },
+            { path: '/dashboard/level-2/code-review', label: 'Code Review' },
+            { path: '/dashboard/level-2/final', label: 'Final Evaluation' },
+            { path: '/dashboard/level-2/submission', label: 'File Submission' },
+          ]
+        },
+        { 
+          label: 'Level 3', 
+          items: [
+            { path: '/dashboard/level-3/proposal', label: 'Proposal' },
+            { path: '/dashboard/level-3/interim', label: 'Interim' },
+            { path: '/dashboard/level-3/final', label: 'Final Evaluation' },
+            { path: '/dashboard/level-3/submission', label: 'File Submission' },
+          ]
+        },
+        { 
+          label: 'Level 4', 
+          items: [
+            { path: '/dashboard/level-4/proposal', label: 'Proposal' },
+            { path: '/dashboard/level-4/interim', label: 'Interim' },
+            { path: '/dashboard/level-4/final', label: 'Final Evaluation' },
+            { path: '/dashboard/level-4/submission', label: 'File Submission' },
+          ]
+        },
+      ]
+    },
+    { 
+      path: '/dashboard/calendar', 
+      icon: CalendarDays, 
+      label: 'Calendar' 
+    },
+    { 
+      path: '/dashboard/communication', 
+      icon: MessageSquare, 
+      label: 'Communication' 
+    },
   ];
 
   return (
@@ -41,18 +109,79 @@ const Sidebar = () => {
       </div>
 
       <nav className="sidebar-nav">
-        {menuItems.map((item) => (
-          <NavLink
-            key={item.path}
-            to={item.path}
-            end={item.path === '/dashboard'}
-            className={({ isActive }) =>
-              `nav-item ${isActive ? 'active' : ''}`
-            }
-          >
-            <item.icon size={22} />
-            {!collapsed && <span>{item.label}</span>}
-          </NavLink>
+        {menuItems.map((item, index) => (
+          <div key={item.key || item.path || index}>
+            {item.hasSubmenu ? (
+              <>
+                <div 
+                  className={`nav-item expandable ${expandedMenus[item.key] ? 'expanded' : ''}`}
+                  onClick={() => toggleMenu(item.key)}
+                >
+                  <item.icon size={22} />
+                  {!collapsed && (
+                    <>
+                      <span>{item.label}</span>
+                      <ChevronDown 
+                        size={18} 
+                        className="expand-icon"
+                        style={{ 
+                          transform: expandedMenus[item.key] ? 'rotate(180deg)' : 'rotate(0deg)',
+                          transition: 'transform 0.2s'
+                        }}
+                      />
+                    </>
+                  )}
+                </div>
+                {!collapsed && expandedMenus[item.key] && (
+                  <div className="submenu">
+                    {item.key === 'academicLevel' ? (
+                      // Academic Level nested structure
+                      item.submenu.map((level, levelIndex) => (
+                        <div key={levelIndex} className="submenu-section">
+                          <div className="submenu-title">{level.label}</div>
+                          {level.items.map((subItem, subIndex) => (
+                            <NavLink
+                              key={subIndex}
+                              to={subItem.path}
+                              className={({ isActive }) =>
+                                `submenu-item ${isActive ? 'active' : ''}`
+                              }
+                            >
+                              {subItem.label}
+                            </NavLink>
+                          ))}
+                        </div>
+                      ))
+                    ) : (
+                      // Regular submenu
+                      item.submenu.map((subItem, subIndex) => (
+                        <NavLink
+                          key={subIndex}
+                          to={subItem.path}
+                          className={({ isActive }) =>
+                            `submenu-item ${isActive ? 'active' : ''}`
+                          }
+                        >
+                          {subItem.label}
+                        </NavLink>
+                      ))
+                    )}
+                  </div>
+                )}
+              </>
+            ) : (
+              <NavLink
+                to={item.path}
+                end={item.path === '/dashboard'}
+                className={({ isActive }) =>
+                  `nav-item ${isActive ? 'active' : ''}`
+                }
+              >
+                <item.icon size={22} />
+                {!collapsed && <span>{item.label}</span>}
+              </NavLink>
+            )}
+          </div>
         ))}
       </nav>
     </aside>
