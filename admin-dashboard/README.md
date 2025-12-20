@@ -1,130 +1,70 @@
-# Admin Dashboard
+# Getting Started with Create React App
 
-**Assigned to:** [S.A.S Harshika]  
-**Port:** 5176  
-**Status:** 🔄 Ongoing
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
----
+## Available Scripts
 
-## 🎯 Setup Instructions
+In the project directory, you can run:
 
-1. **Navigate to this folder:**
-```bash
-cd admin-dashboard
-```
+### `npm start`
 
-2. **Create React app:**
-```bash
-npm create vite@latest . -- --template react
-npm install
-npm install react-router-dom lucide-react
-```
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-3. **Configure port in vite.config.js:**
-```javascript
-export default defineConfig({
-  plugins: [react()],
-  server: {
-    port: 5176,
-    strictPort: true
-  }
-})
-```
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-4. **Run the app:**
-```bash
-npm run dev
-```
+### `npm test`
 
----
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-## 📋 Required Features
+### `npm run build`
 
-### **Dashboard Overview:**
-- System-wide statistics
-- Total users (all roles)
-- Active projects count
-- System health monitoring
-- Recent activities
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-### **User Management:**
-- View all users (Students, Coordinators, Supervisors, Industry Mentors)
-- Create new users
-- Edit user details
-- Assign/change roles
-- Activate/deactivate users
-- Bulk user operations
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-### **Role Management:**
-- Define role permissions
-- Access control settings
-- Role assignment
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### **System Settings:**
-- General system configuration
-- Email settings
-- Backup configuration
-- Security settings
-- API keys management
+### `npm run eject`
 
-### **Activity Logs:**
-- View system logs
-- User activity tracking
-- Error logs
-- Audit trail
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-### **Data Management:**
-- Database backup
-- Data export (CSV, Excel)
-- Data import
-- System restore
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-### **Security:**
-- Password policies
-- Session management
-- IP whitelisting
-- Security alerts
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
----
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## 🎨 Design Guidelines
+## Learn More
 
-- **Follow Coordinator Dashboard design**
-- **Use EduSync branding** (E logo)
-- **Color scheme:** Purple/Blue gradient (#667eea to #764ba2)
-- **Header:** "Welcome back, Admin"
-- **Icons:** Use Lucide React icons
-- **Add red accents for critical actions (delete, etc.)**
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
----
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-## 📝 Example Pages Structure
+### Code Splitting
 
-```
-admin-dashboard/
-├── src/
-│   ├── components/
-│   │   ├── Sidebar.jsx
-│   │   ├── Header.jsx
-│   │   └── ProtectedRoute.jsx
-│   ├── pages/
-│   │   ├── Overview.jsx
-│   │   ├── UserManagement.jsx
-│   │   ├── RoleManagement.jsx
-│   │   ├── SystemSettings.jsx
-│   │   ├── ActivityLogs.jsx
-│   │   ├── DataManagement.jsx
-│   │   └── Security.jsx
-│   ├── context/
-│   │   └── AuthContext.jsx
-│   ├── layouts/
-│   │   └── DashboardLayout.jsx
-│   └── App.jsx
-```
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
----
+### Analyzing the Bundle Size
 
-## 🚀 Start Date: February 2026
-## ✅ Target Completion: March 2026
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-**Reference:** Check `coordinator-dashboard` folder for design patterns!
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
