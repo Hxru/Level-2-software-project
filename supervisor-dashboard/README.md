@@ -1,127 +1,18 @@
-# Supervisor Dashboard
+# React + Vite
 
-**Assigned to:** [Team Member Name]  
-**Port:** 5177  
-**Status:** 🔄 To Start
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
----
+Currently, two official plugins are available:
 
-## 🎯 Setup Instructions
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-1. **Navigate to this folder:**
-```bash
-cd supervisor-dashboard
-```
+## React Compiler
 
-2. **Create React app:**
-```bash
-npm create vite@latest . -- --template react
-npm install
-npm install react-router-dom lucide-react
-```
+The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
 
-3. **Configure port in vite.config.js:**
-```javascript
-export default defineConfig({
-  plugins: [react()],
-  server: {
-    port: 5177,
-    strictPort: true
-  }
-})
-```
+Note: This will impact Vite dev & build performances.
 
-4. **Run the app:**
-```bash
-npm run dev
-```
+## Expanding the ESLint configuration
 
----
-
-## 📋 Required Features
-
-### **Dashboard Overview:**
-- Total supervised groups
-- Pending evaluations
-- Upcoming meetings
-- Recent submissions
-- Student performance overview
-
-### **My Project Groups:**
-- View all supervised groups
-- Group members details
-- Project progress tracking
-- Group performance metrics
-
-### **Submissions Review:**
-- View all submissions from supervised groups
-- Download submitted files
-- Review history
-- Submission status tracking
-
-### **Evaluations:**
-- Grade submissions
-- Provide detailed feedback
-- Evaluation rubrics
-- Grade history
-- Performance analytics
-
-### **Meetings:**
-- Schedule meetings with students
-- Meeting calendar
-- Meeting notes
-- Attendance tracking
-
-### **Progress Reports:**
-- Generate student progress reports
-- Group performance reports
-- Export reports (PDF)
-
-### **Communication:**
-- Message students
-- Group announcements
-- Email notifications
-- Chat with coordinators
-
----
-
-## 🎨 Design Guidelines
-
-- **Follow Coordinator Dashboard design**
-- **Use EduSync branding** (E logo)
-- **Color scheme:** Purple/Blue gradient (#667eea to #764ba2)
-- **Header:** "Welcome back, Supervisor"
-- **Icons:** Use Lucide React icons
-
----
-
-## 📝 Example Pages Structure
-
-```
-supervisor-dashboard/
-├── src/
-│   ├── components/
-│   │   ├── Sidebar.jsx
-│   │   ├── Header.jsx
-│   │   └── ProtectedRoute.jsx
-│   ├── pages/
-│   │   ├── Overview.jsx
-│   │   ├── ProjectGroups.jsx
-│   │   ├── Submissions.jsx
-│   │   ├── Evaluations.jsx
-│   │   ├── Meetings.jsx
-│   │   ├── Reports.jsx
-│   │   └── Communication.jsx
-│   ├── context/
-│   │   └── AuthContext.jsx
-│   ├── layouts/
-│   │   └── DashboardLayout.jsx
-│   └── App.jsx
-```
-
----
-
-## 🚀 Start Date: February 2026
-## ✅ Target Completion: March 2026
-
-**Reference:** Check `coordinator-dashboard` folder for design patterns!
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
