@@ -1,11 +1,17 @@
 import { useState } from 'react';
-import { Send, Search, MessageCircle } from 'lucide-react';
+import { Send, Search, MessageCircle, Bell, Megaphone } from 'lucide-react';
 import './Communication.css';
 
-const Communication = () => {
+const Communication = ({ view = 'messages' }) => {
   const [selectedUser, setSelectedUser] = useState(null);
   const [message, setMessage] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
+
+  const viewTitles = {
+    'messages': 'Messages',
+    'announcements': 'Announcements',
+    'notifications': 'Notifications',
+  };
 
   const conversations = [
     {
@@ -80,10 +86,91 @@ const Communication = () => {
     }
   };
 
+  if (view === 'announcements') {
+    return (
+      <div className="communication-page">
+        <div className="page-header">
+          <h2>
+            <Megaphone size={28} />
+            Announcements
+          </h2>
+          <p>Create and manage system-wide announcements</p>
+        </div>
+        <div className="announcements-container">
+          <button className="create-announcement-btn">
+            <Megaphone size={20} />
+            Create New Announcement
+          </button>
+          <div className="announcements-list">
+            <div className="announcement-card high">
+              <div className="announcement-header">
+                <h3>Evaluation Panel Assignment - Level 2</h3>
+                <span className="priority-badge high">High Priority</span>
+              </div>
+              <p>All supervisors must submit evaluation panel availability by Dec 22.</p>
+              <div className="announcement-footer">
+                <span>Posted: Dec 19, 2025</span>
+                <span>By: Coordinator</span>
+              </div>
+            </div>
+            <div className="announcement-card medium">
+              <div className="announcement-header">
+                <h3>Code Review Schedule</h3>
+                <span className="priority-badge medium">Medium Priority</span>
+              </div>
+              <p>Level 2 code review sessions scheduled for Dec 23-25. Check calendar for details.</p>
+              <div className="announcement-footer">
+                <span>Posted: Dec 18, 2025</span>
+                <span>By: Coordinator</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (view === 'notifications') {
+    return (
+      <div className="communication-page">
+        <div className="page-header">
+          <h2>
+            <Bell size={28} />
+            Notifications
+          </h2>
+          <p>System notifications and alerts</p>
+        </div>
+        <div className="notifications-container">
+          <div className="notification-item unread">
+            <div className="notification-icon evaluation">
+              <MessageCircle size={20} />
+            </div>
+            <div className="notification-content">
+              <h4>New Submission - Group A</h4>
+              <p>Group A has submitted their Level 2 Code Review documentation.</p>
+              <span className="notification-time">5 minutes ago</span>
+            </div>
+          </div>
+          <div className="notification-item">
+            <div className="notification-icon message">
+              <Bell size={20} />
+            </div>
+            <div className="notification-content">
+              <h4>Evaluation Deadline Reminder</h4>
+              <p>3 evaluations are due within 24 hours.</p>
+              <span className="notification-time">2 hours ago</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Default: Messages view
   return (
     <div className="communication-page">
       <div className="page-header">
-        <h2>Communication</h2>
+        <h2>Communication - {viewTitles[view]}</h2>
         <p>Message students and supervisors</p>
       </div>
 

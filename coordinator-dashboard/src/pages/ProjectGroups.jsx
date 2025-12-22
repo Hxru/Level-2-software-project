@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Search, Plus, Users, FileText, Calendar } from 'lucide-react';
 import './ProjectGroups.css';
 
-const ProjectGroups = () => {
+const ProjectGroups = ({ level = 'All' }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const groups = [
@@ -15,6 +15,7 @@ const ProjectGroups = () => {
       status: 'Active',
       progress: 75,
       created: '2025-09-01',
+      level: '2',
     },
     {
       id: 2,
@@ -25,6 +26,7 @@ const ProjectGroups = () => {
       status: 'Active',
       progress: 60,
       created: '2025-09-01',
+      level: '1',
     },
     {
       id: 3,
@@ -35,6 +37,7 @@ const ProjectGroups = () => {
       status: 'Active',
       progress: 45,
       created: '2025-09-01',
+      level: '3',
     },
     {
       id: 4,
@@ -45,20 +48,23 @@ const ProjectGroups = () => {
       status: 'Pending',
       progress: 30,
       created: '2025-09-05',
+      level: '4',
     },
   ];
 
-  const filteredGroups = groups.filter((group) =>
-    group.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    group.leader.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredGroups = groups
+    .filter((group) => level === 'All' || group.level === level)
+    .filter((group) =>
+      group.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      group.leader.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
   return (
     <div className="project-groups-page">
       <div className="page-header">
         <div>
-          <h2>Project Groups</h2>
-          <p>Manage all student project groups</p>
+          <h2>Project Groups {level !== 'All' ? `- Level ${level}` : ''}</h2>
+          <p>Manage {level !== 'All' ? `Level ${level}` : 'all'} student project groups</p>
         </div>
         <button className="add-group-btn">
           <Plus size={20} />
