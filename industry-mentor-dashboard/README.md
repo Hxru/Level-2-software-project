@@ -116,6 +116,7 @@ npm start
 - **Icons:** Lucide React icons throughout
 - **Layout:** Fixed sidebar + scrollable content area
 - **Responsive:** Works on desktop and tablet
+  
 ---
 
 ## 📝 Dashboard  Structure
